@@ -1,0 +1,165 @@
+/* Offers & Packages Page CSS */
+
+.offers-hero {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, #350824 50%, #1C1018 100%);
+  color: #fff;
+  padding: var(--space-16) 0 var(--space-12) 0;
+  text-align: center;
+}
+
+/* Scrolling Ticker Tape */
+.ticker-wrap {
+  width: 100%;
+  background-color: var(--color-accent);
+  color: var(--color-bg-dark);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: var(--space-2) 0;
+  font-weight: 700;
+  font-size: var(--text-sm);
+}
+
+.ticker {
+  display: inline-block;
+  animation: ticker 25s linear infinite;
+}
+
+@keyframes ticker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.ticker-item {
+  display: inline-block;
+  padding: 0 var(--space-6);
+}
+
+/* Combo Packages Grid */
+.combo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.combo-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid var(--color-border);
+}
+
+.combo-card.popular {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-lg);
+}
+
+.combo-badge-corner {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.includes-list {
+  margin: var(--space-4) 0;
+}
+
+.includes-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-dark);
+}
+
+.includes-list i {
+  color: var(--color-success);
+}
+
+/* Membership Tiers */
+.membership-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+  align-items: center;
+}
+
+.membership-card {
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+  border: 1px solid var(--color-border);
+}
+
+.membership-card.gold-plan {
+  border: 2px solid var(--color-accent);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
+  background-color: #FFFDF7;
+}
+
+.membership-price {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  color: var(--color-primary-dark);
+  margin: var(--space-3) 0;
+}
+
+/* Interactive Promo Validator */
+.validator-card {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  background: #fff;
+  padding: var(--space-8);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+}
+
+.promo-input-group {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* FAQ Accordion */
+.faq-container {
+  max-width: 800px;
+  margin: var(--space-8) auto 0 auto;
+}
+
+.faq-item {
+  background-color: #fff;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.faq-header {
+  padding: var(--space-4) var(--space-6);
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.faq-body {
+  padding: 0 var(--space-6) var(--space-4) var(--space-6);
+  display: none;
+  font-size: var(--text-sm);
+  color: var(--color-text-mid);
+}
+
+.faq-item.active .faq-body { display: block; }
+.faq-item.active .faq-header i { transform: rotate(180deg); }
+
+@media (max-width: 1024px) {
+  .combo-grid, .membership-grid { grid-template-columns: 1fr; }
+  .membership-card.gold-plan { transform: none; }
+}

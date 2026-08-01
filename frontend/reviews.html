@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Reviews & Salon Ratings — GlowCut Salon</title>
+  <meta name="description" content="Read authentic customer reviews, ratings, and see how GlowCut compares with nearby salons in Delhi. Leave your review!">
+  
+  <!-- Bootstrap 5.3 & FontAwesome 6 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Styling -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/reviews.css">
+</head>
+<body>
+
+  <!-- Bootstrap 5 Header / Navbar -->
+  <nav class="navbar navbar-expand-lg gc-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fa-solid fa-scissors"></i> GlowCut
+      </a>
+      <button class="navbar-toggler gc-navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+          <li class="nav-item"><a class="nav-link" href="book.html">Book Now</a></li>
+          <li class="nav-item"><a class="nav-link" href="queue.html">Live Queue</a></li>
+          <li class="nav-item"><a class="nav-link nav-ai" href="ai-advisor.html"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link active" href="reviews.html">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="ms-lg-3 mt-3 mt-lg-0">
+          <a href="book.html" class="btn-gc-primary btn-sm w-100 text-center"><i class="fa-regular fa-calendar-check"></i> Book Now</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Hero -->
+  <section class="gc-page-hero" style="background-image: linear-gradient(rgba(28, 16, 24, 0.75), rgba(28, 16, 24, 0.85)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80');">
+    <div class="container">
+      <span class="badge-gc-gold mb-2">Verified Feedback</span>
+      <h1 class="display-4 fw-bold">What Our Clients Are Saying</h1>
+      <p class="text-white-50">
+        Real experiences from client transformations at GlowCut Salon.
+      </p>
+    </div>
+  </section>
+
+  <!-- Rating Summary Card -->
+  <div class="container" style="margin-top: -30px; position: relative; z-index: 10;">
+    <div class="rating-summary-card gc-card p-4 p-md-5 bg-white shadow row g-4 align-items-center">
+      <div class="col-md-4 text-center border-end-md">
+        <div class="score-num display-3 fw-bold text-gc-primary mb-2" id="summary-score-num">4.9 ★</div>
+        <p class="fw-semibold text-dark mb-0" id="summary-total-count">Based on verified reviews</p>
+      </div>
+
+      <div class="col-md-8">
+        <div class="star-bar-row py-1">
+          <span style="min-width: 60px;">5 Stars</span>
+          <div class="progress-track flex-grow-1 mx-3" style="height: 8px; background: #e9ecef; border-radius: 4px;">
+            <div class="progress-fill" id="star-bar-5" style="width: 85%; height: 100%; background: var(--gc-accent); border-radius: 4px;"></div>
+          </div>
+          <span id="star-pct-5" class="fw-bold" style="min-width: 40px; text-align: right;">85%</span>
+        </div>
+        <div class="star-bar-row py-1">
+          <span style="min-width: 60px;">4 Stars</span>
+          <div class="progress-track flex-grow-1 mx-3" style="height: 8px; background: #e9ecef; border-radius: 4px;">
+            <div class="progress-fill" id="star-bar-4" style="width: 12%; height: 100%; background: var(--gc-accent); border-radius: 4px;"></div>
+          </div>
+          <span id="star-pct-4" class="fw-bold" style="min-width: 40px; text-align: right;">12%</span>
+        </div>
+        <div class="star-bar-row py-1">
+          <span style="min-width: 60px;">3 Stars</span>
+          <div class="progress-track flex-grow-1 mx-3" style="height: 8px; background: #e9ecef; border-radius: 4px;">
+            <div class="progress-fill" id="star-bar-3" style="width: 3%; height: 100%; background: var(--gc-accent); border-radius: 4px;"></div>
+          </div>
+          <span id="star-pct-3" class="fw-bold" style="min-width: 40px; text-align: right;">3%</span>
+        </div>
+        <div class="star-bar-row py-1">
+          <span style="min-width: 60px;">2 Stars</span>
+          <div class="progress-track flex-grow-1 mx-3" style="height: 8px; background: #e9ecef; border-radius: 4px;">
+            <div class="progress-fill" id="star-bar-2" style="width: 0%; height: 100%; background: var(--gc-accent); border-radius: 4px;"></div>
+          </div>
+          <span id="star-pct-2" class="fw-bold" style="min-width: 40px; text-align: right;">0%</span>
+        </div>
+        <div class="star-bar-row py-1">
+          <span style="min-width: 60px;">1 Star</span>
+          <div class="progress-track flex-grow-1 mx-3" style="height: 8px; background: #e9ecef; border-radius: 4px;">
+            <div class="progress-fill" id="star-bar-1" style="width: 0%; height: 100%; background: var(--gc-accent); border-radius: 4px;"></div>
+          </div>
+          <span id="star-pct-1" class="fw-bold" style="min-width: 40px; text-align: right;">0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter & Reviews List Section -->
+  <section class="gc-section">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+        <h3 class="h4 m-0"><i class="fa-solid fa-comments text-gc-primary me-2"></i> Customer Testimonials</h3>
+        
+        <div class="d-flex gap-2">
+          <select id="filter-star-select" class="gc-form-input py-1 px-3" style="width: auto;">
+            <option value="all">All Ratings</option>
+            <option value="5">5 Stars</option>
+            <option value="4">4 Stars</option>
+          </select>
+          <select id="filter-sort-select" class="gc-form-input py-1 px-3" style="width: auto;">
+            <option value="recent">Most Recent</option>
+            <option value="highest">Highest Rated</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row g-4" id="reviews-grid">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Submit Review Form Section -->
+  <section class="gc-section gc-section-blush">
+    <div class="container" style="max-width: 650px;">
+      <div class="gc-card p-4 p-md-5">
+        <div class="text-center mb-4">
+          <span class="badge-gc-primary mb-2">Share Feedback</span>
+          <h3 class="mb-2">Had a Visit Recently? Leave a Review</h3>
+          <p class="text-muted text-sm">Your review helps us maintain our quality standards.</p>
+        </div>
+
+        <form id="submit-review-form" class="text-start">
+          <div class="mb-3">
+            <label class="gc-form-label">Your Name *</label>
+            <input type="text" id="rev-cust-name" class="gc-form-input" placeholder="e.g. Sanjana Malhotra" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="gc-form-label">Service Availed</label>
+            <input type="text" id="rev-service-name" class="gc-form-input" placeholder="e.g. Keratin Treatment / Haircut">
+          </div>
+
+          <div class="mb-3">
+            <label class="gc-form-label mb-2">Your Star Rating *</label>
+            <div id="submit-star-picker" style="font-size: 2rem; cursor: pointer; color: var(--gc-accent);">
+              <i class="fa-solid fa-star" data-value="1"></i>
+              <i class="fa-solid fa-star" data-value="2"></i>
+              <i class="fa-solid fa-star" data-value="3"></i>
+              <i class="fa-solid fa-star" data-value="4"></i>
+              <i class="fa-solid fa-star" data-value="5"></i>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="gc-form-label">Your Review Comment * (Min 10 chars)</label>
+            <textarea id="rev-comment" class="gc-form-input" rows="4" placeholder="Tell us about the atmosphere, staff politeness, and result..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn-gc-primary w-100 text-center justify-content-center">Submit Review</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nearby Salons Comparison Section -->
+  <section class="gc-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge-gc-gold mb-2">Benchmarking</span>
+        <h2 class="display-5 fw-bold">How Do We Compare in Defence Colony?</h2>
+        <p class="text-muted">Public rating reference comparison with nearby local salons.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div class="gc-card text-center h-100 border border-warning shadow-sm position-relative pt-4" style="background: #FFFDF5;">
+            <span class="badge-gc-gold position-absolute" style="top: -12px; left: 50%; transform: translateX(-50%);">You're Here ★ #1 Rated</span>
+            <h4 class="h5 mt-2">GlowCut Salon</h4>
+            <p class="text-xs text-muted mb-2">Defence Colony, Delhi</p>
+            <div class="display-6 fw-bold text-gc-primary my-2">4.9 ★</div>
+            <p class="text-sm mb-1">Live Queue: <strong>YES</strong></p>
+            <p class="text-sm mb-0">AI Advisor: <strong>YES</strong></p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="gc-card text-center h-100">
+            <h4 class="h5">Studio Glamour</h4>
+            <p class="text-xs text-muted mb-2">Lajpat Nagar</p>
+            <div class="display-6 fw-bold text-dark my-2">4.2 ★</div>
+            <p class="text-sm mb-1">Live Queue: No</p>
+            <p class="text-sm mb-0">AI Advisor: No</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="gc-card text-center h-100">
+            <h4 class="h5">Style Scissors Salon</h4>
+            <p class="text-xs text-muted mb-2">South Ext</p>
+            <div class="display-6 fw-bold text-dark my-2">4.0 ★</div>
+            <p class="text-sm mb-1">Live Queue: No</p>
+            <p class="text-sm mb-0">AI Advisor: No</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+          <div class="gc-card text-center h-100">
+            <h4 class="h5">Vogue Beauty Hub</h4>
+            <p class="text-xs text-muted mb-2">Greater Kailash</p>
+            <div class="display-6 fw-bold text-dark my-2">4.3 ★</div>
+            <p class="text-sm mb-1">Live Queue: No</p>
+            <p class="text-sm mb-0">AI Advisor: No</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Universal Footer -->
+  <footer class="gc-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="gc-footer-brand-name mb-3"><i class="fa-solid fa-scissors"></i> GlowCut Salon</div>
+          <p class="text-white-50">Delhi's premier salon delivering luxury hair styling, organic skin care, real-time live queue tracking, and AI hairstyle consultation.</p>
+          <div class="mt-4">
+            <a href="#" class="gc-social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="gc-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="gc-social-link"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-lg-2">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services & Pricing</a></li>
+            <li><a href="offers.html">Packages & Offers</a></li>
+            <li><a href="book.html">Book Appointment</a></li>
+            <li><a href="queue.html">Live Queue Status</a></li>
+            <li><a href="ai-advisor.html">AI Hair Advisor</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+          <h5>Contact & Hours</h5>
+          <ul class="list-unstyled">
+            <li class="contact-item"><i class="fa-solid fa-location-dot"></i> <span>123 Defence Colony, New Delhi — 110024</span></li>
+            <li class="contact-item"><i class="fa-solid fa-phone"></i> <span>+91 92679 54524</span></li>
+            <li class="contact-item"><i class="fa-solid fa-envelope"></i> <span>hello@glowcut.in</span></li>
+            <li class="contact-item"><i class="fa-solid fa-clock"></i> <span>Tue - Sat: 10AM - 8PM<br>Sun: 10AM - 6PM (Mon Closed)</span></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+          <h5>Follow Us</h5>
+          <div class="d-flex">
+            <a href="#" class="gc-social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="gc-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="gc-footer-bottom mt-5">
+        <div>&copy; 2026 GlowCut Salon. All Rights Reserved.</div>
+        <div>Made with ❤️ for Internship Project | Triyuga Soft Tech Pvt. Ltd.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/reviews.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+/* Services & Pricing Page CSS */
+
+.page-hero {
+  background: linear-gradient(rgba(28, 16, 24, 0.75), rgba(28, 16, 24, 0.85)),
+              url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+  padding: var(--space-16) 0 var(--space-12) 0;
+  color: #fff;
+  text-align: center;
+}
+
+.breadcrumb {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  margin-bottom: var(--space-3);
+}
+
+.breadcrumb a { color: var(--color-accent-light); }
+
+/* Category Sticky Tabs */
+.category-tabs-bar {
+  position: sticky;
+  top: 80px;
+  background: var(--color-bg-alt);
+  z-index: 900;
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.tabs-flex {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding: var(--space-3) 0;
+  scrollbar-width: none;
+}
+
+.tabs-flex::-webkit-scrollbar { display: none; }
+
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--color-border);
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+.tab-btn:hover, .tab-btn.active {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+/* Service Card List Grid */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.service-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-3);
+}
+
+.service-price {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.service-duration {
+  font-size: var(--text-xs);
+  color: var(--color-text-mid);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Pricing Table */
+.pricing-table-container {
+  overflow-x: auto;
+  margin-top: var(--space-8);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+.pricing-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  text-align: left;
+}
+
+.pricing-table th {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  padding: var(--space-4) var(--space-6);
+  font-family: var(--font-heading);
+  font-size: var(--text-md);
+  cursor: pointer;
+  user-select: none;
+}
+
+.pricing-table th:hover {
+  background-color: var(--color-primary);
+}
+
+.pricing-table td {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+}
+
+.pricing-table tr:nth-child(even) {
+  background-color: var(--color-primary-light);
+}
+
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr; }
+}

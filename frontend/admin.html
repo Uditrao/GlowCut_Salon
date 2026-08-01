@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlowCut Salon — Admin Portal & Queue Manager</title>
+  
+  <!-- Bootstrap 5.3 & FontAwesome 6 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Styling -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body" style="background-color: #F8F9FA;">
+
+  <!-- Admin Navigation Bar -->
+  <nav class="navbar navbar-dark bg-dark px-4 py-3" id="admin-nav" style="display: none;">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <div class="navbar-brand m-0 fw-bold d-flex align-items-center gap-2" style="font-family: var(--gc-font-heading);">
+        <i class="fa-solid fa-scissors text-gc-gold"></i> GlowCut Admin Portal
+      </div>
+      <div class="d-flex align-items-center gap-3 text-white">
+        <span class="text-white-50 text-sm"><i class="fa-solid fa-user-shield me-1"></i> Logged in as Admin</span>
+        <button id="admin-logout-btn" class="btn btn-outline-light btn-sm px-3"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Login Form Box (Visible when unauthenticated) -->
+  <div id="admin-login-wrapper" class="container py-5">
+    <div class="admin-login-box gc-card p-4 p-md-5 mx-auto bg-white shadow-lg text-center" style="max-width: 450px;">
+      <div class="brand-logo mb-3 justify-content-center display-6 fw-bold text-gc-primary" style="font-family: var(--gc-font-heading);">
+        <i class="fa-solid fa-scissors text-gc-gold"></i> GlowCut Admin
+      </div>
+      <h3 class="h4 mb-2">Admin Login</h3>
+      <p class="text-muted text-sm mb-4">
+        Enter administrative credentials to access queue management and analytics.
+      </p>
+
+      <form id="admin-login-form" class="text-start">
+        <div class="mb-3">
+          <label class="gc-form-label">Email Address</label>
+          <input type="email" id="admin-email" class="gc-form-input" value="admin@glowcut.in" required>
+        </div>
+        <div class="mb-4">
+          <label class="gc-form-label">Password</label>
+          <input type="password" id="admin-password" class="gc-form-input" value="admin123" required>
+        </div>
+        <button type="submit" class="btn-gc-primary w-100 text-center justify-content-center">Log In to Dashboard</button>
+      </form>
+      <div class="text-muted text-xs mt-4">Demo Admin: admin@glowcut.in / admin123</div>
+    </div>
+  </div>
+
+  <!-- Main Admin Dashboard (Visible when authenticated) -->
+  <div id="admin-dashboard-wrapper" class="admin-dashboard py-5" style="display: none;">
+    <div class="container">
+      
+      <!-- Metrics Analytics Grid -->
+      <div class="row g-4 mb-5">
+        
+        <div class="col-sm-6 col-lg-3">
+          <div class="metric-card gc-card p-4 d-flex align-items-center gap-3 bg-white h-100">
+            <div class="metric-icon rounded p-3 d-flex align-items-center justify-content-center" style="background: var(--gc-primary-light); color: var(--gc-primary-dark); font-size: 1.5rem; width: 54px; height: 54px;">
+              <i class="fa-solid fa-indian-rupee-sign"></i>
+            </div>
+            <div>
+              <div class="text-muted text-xs text-uppercase font-monospace">Today's Revenue</div>
+              <div class="metric-val fs-3 fw-bold font-monospace text-dark m-0" id="m-revenue-today">₹0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="metric-card gc-card p-4 d-flex align-items-center gap-3 bg-white h-100">
+            <div class="metric-icon rounded p-3 d-flex align-items-center justify-content-center" style="background: var(--gc-primary-light); color: var(--gc-primary-dark); font-size: 1.5rem; width: 54px; height: 54px;">
+              <i class="fa-solid fa-users-line"></i>
+            </div>
+            <div>
+              <div class="text-muted text-xs text-uppercase font-monospace">Queue Length</div>
+              <div class="metric-val fs-3 fw-bold font-monospace text-dark m-0" id="m-queue-len">0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="metric-card gc-card p-4 d-flex align-items-center gap-3 bg-white h-100">
+            <div class="metric-icon rounded p-3 d-flex align-items-center justify-content-center" style="background: var(--gc-primary-light); color: var(--gc-primary-dark); font-size: 1.5rem; width: 54px; height: 54px;">
+              <i class="fa-solid fa-calendar-check"></i>
+            </div>
+            <div>
+              <div class="text-muted text-xs text-uppercase font-monospace">Today's Bookings</div>
+              <div class="metric-val fs-3 fw-bold font-monospace text-dark m-0" id="m-bookings-today">0</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <div class="metric-card gc-card p-4 d-flex align-items-center gap-3 bg-white h-100">
+            <div class="metric-icon rounded p-3 d-flex align-items-center justify-content-center" style="background: var(--gc-primary-light); color: var(--gc-primary-dark); font-size: 1.5rem; width: 54px; height: 54px;">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <div>
+              <div class="text-muted text-xs text-uppercase font-monospace">Average Rating</div>
+              <div class="metric-val fs-3 fw-bold font-monospace text-dark m-0" id="m-avg-rating">4.9 ★</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="d-flex gap-2 border-bottom pb-2 mb-4 overflow-x-auto" style="scrollbar-width: none;">
+        <button class="btn btn-outline-dark px-4 py-2 active admin-tab-btn" data-tab="queue">Live Queue Manager</button>
+        <button class="btn btn-outline-dark px-4 py-2 admin-tab-btn" data-tab="appointments">Appointments List</button>
+        <button class="btn btn-outline-dark px-4 py-2 admin-tab-btn" data-tab="reviews">Reviews Moderation</button>
+        <button class="btn btn-outline-dark px-4 py-2 admin-tab-btn" data-tab="enquiries">Enquiries Inbox</button>
+      </div>
+
+      <!-- TAB 1: Live Queue Manager -->
+      <div id="tab-content-queue" class="admin-tab-content" style="display: block;">
+        <div class="gc-card p-4 p-md-5 bg-white shadow-sm text-start">
+          <div class="row align-items-center g-4 border-bottom pb-4 mb-4">
+            <div class="col-md-7 text-center text-md-start">
+              <h3 class="h4 mb-1">Salon Floor Queue Controller</h3>
+              <p class="text-muted text-sm m-0">Manage real-time token advancement on the salon floor.</p>
+            </div>
+            <div class="col-md-5 d-flex align-items-center justify-content-center justify-content-md-end gap-4">
+              <div class="text-center text-md-start">
+                <span class="text-muted text-xs text-uppercase">Now Serving:</span>
+                <strong class="display-6 fw-bold text-gc-primary font-monospace d-block mt-1" id="admin-now-serving-token">A-005</strong>
+              </div>
+              <button id="btn-advance-queue" class="btn-gc-gold btn-lg py-3"><i class="fa-solid fa-forward"></i> Mark Done → Call Next Token</button>
+            </div>
+          </div>
+          <p class="text-xs text-muted m-0">
+            Clicking "Mark Done → Call Next Token" completes the current appointment, shifts queue list, and updates public token displays automatically within 10s.
+          </p>
+        </div>
+      </div>
+
+      <!-- TAB 2: Appointments List -->
+      <div id="tab-content-appointments" class="admin-tab-content" style="display: none;">
+        <div class="gc-card p-4 bg-white shadow-sm">
+          <h3 class="h4 mb-2">Customer Appointments Overview</h3>
+          <p class="text-muted text-sm mb-4">Full history of booked slots and customer tokens.</p>
+          
+          <div class="table-responsive">
+            <table class="table table-hover align-middle admin-table">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Token</th>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Service</th>
+                  <th scope="col">Stylist</th>
+                  <th scope="col">Date & Slot</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Status</th>
+                </tr>
+              </thead>
+              <tbody id="admin-appointments-tbody">
+                <!-- Rendered via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: Reviews Moderation -->
+      <div id="tab-content-reviews" class="admin-tab-content" style="display: none;">
+        <div class="gc-card p-4 bg-white shadow-sm">
+          <h3 class="h4 mb-2">Pending Customer Reviews</h3>
+          <p class="text-muted text-sm mb-4">Review and approve public customer feedback before it appears on the reviews page.</p>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle admin-table">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Customer</th>
+                  <th scope="col">Rating</th>
+                  <th scope="col">Comment</th>
+                  <th scope="col">Service</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="admin-reviews-tbody">
+                <!-- Rendered via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: Enquiries Inbox -->
+      <div id="tab-content-enquiries" class="admin-tab-content" style="display: none;">
+        <div class="gc-card p-4 bg-white shadow-sm">
+          <h3 class="h4 mb-2">Customer Enquiries & Contact Messages</h3>
+          <p class="text-muted text-sm mb-4">View incoming messages from the contact page enquiry form.</p>
+
+          <div class="table-responsive">
+            <table class="table table-hover align-middle admin-table">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Sender</th>
+                  <th scope="col">Subject</th>
+                  <th scope="col">Message</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody id="admin-enquiries-tbody">
+                <!-- Rendered via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

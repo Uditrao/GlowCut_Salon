@@ -1,0 +1,48 @@
+/* ============================================================
+   GlowCut Salon — CSS Custom Properties (Design Tokens)
+   Used alongside Bootstrap 5 for brand-specific styling
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ── Brand Colors ── */
+  --gc-primary:        #7B2150;   /* Deep Burgundy */
+  --gc-primary-dark:   #5A1739;
+  --gc-primary-light:  #F5E6EE;
+  --gc-accent:         #C9A84C;   /* Gold */
+  --gc-accent-dark:    #A8842A;
+  --gc-accent-light:   #FDF4DC;
+  --gc-cream:          #FAF7F2;   /* Warm Cream */
+  --gc-dark:           #1C1018;   /* Rich Dark */
+
+  /* ── Text Colors ── */
+  --gc-text-dark:   #2D1B26;
+  --gc-text-mid:    #6B5A63;
+  --gc-text-muted:  #9E8A96;
+  --gc-text-light:  #FAF7F2;
+
+  /* ── Semantic Colors ── */
+  --gc-success: #2E7D32;
+  --gc-error:   #C62828;
+  --gc-warning: #E65100;
+
+  /* ── Typography ── */
+  --gc-font-heading: 'Playfair Display', Georgia, serif;
+  --gc-font-body:    'Poppins', system-ui, sans-serif;
+
+  /* ── Shadows ── */
+  --gc-shadow-sm:   0 1px 3px rgba(28,16,24,0.08);
+  --gc-shadow-md:   0 4px 16px rgba(28,16,24,0.12);
+  --gc-shadow-lg:   0 8px 32px rgba(28,16,24,0.18);
+  --gc-shadow-card: 0 2px 8px rgba(28,16,24,0.08);
+
+  /* ── Border Radius ── */
+  --gc-radius-sm:   6px;
+  --gc-radius-md:   12px;
+  --gc-radius-lg:   20px;
+  --gc-radius-full: 999px;
+
+  /* ── Transitions ── */
+  --gc-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}

@@ -1,0 +1,10 @@
+node_modules/
+.env
+uploads/*
+!uploads/.gitkeep
+!uploads/gallery/.gitkeep
+!uploads/ai-photos/.gitkeep
+uploads/ai-photos/*
+!uploads/ai-photos/.gitkeep
+uploads/gallery/*
+!uploads/gallery/.gitkeep

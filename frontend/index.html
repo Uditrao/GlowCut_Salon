@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlowCut Salon — Premium Hair, Beauty & Spa Solutions in Delhi</title>
+  <meta name="description" content="Delhi's top salon for hair styling, skin treatments, bridal makeup, live queue tracking, and AI hairstyle consultation. Book your slot online!">
+  
+  <!-- Bootstrap 5.3 & FontAwesome 6 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Styling -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+  <!-- Bootstrap 5 Header / Navbar -->
+  <nav class="navbar navbar-expand-lg gc-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fa-solid fa-scissors"></i> GlowCut
+      </a>
+      <button class="navbar-toggler gc-navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="offers.html">Offers</a></li>
+          <li class="nav-item"><a class="nav-link" href="book.html">Book Now</a></li>
+          <li class="nav-item"><a class="nav-link" href="queue.html">Live Queue</a></li>
+          <li class="nav-item"><a class="nav-link nav-ai" href="ai-advisor.html"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Advisor</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="reviews.html">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <div class="ms-lg-3 mt-3 mt-lg-0">
+          <a href="book.html" class="btn-gc-primary btn-sm w-100 text-center"><i class="fa-regular fa-calendar-check"></i> Book Now</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero py-5 d-flex align-items-center">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7 text-center text-lg-start">
+          <span class="hero-tag mb-3"><i class="fa-solid fa-star"></i> Delhi's Premium Luxury Salon</span>
+          <h1 class="hero-title text-white display-4 fw-bold mb-4">Look Stunning, Feel Confident Every Single Day</h1>
+          <p class="hero-sub text-white-50 fs-5 mb-5">Experience elite hair crafting, organic skin therapies, and real-time live queue management. No waiting in line — track your turn live.</p>
+          <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3">
+            <a href="book.html" class="btn-gc-primary btn-lg"><i class="fa-solid fa-calendar-plus"></i> Book Appointment</a>
+            <a href="services.html" class="btn-gc-outline-white btn-lg"><i class="fa-solid fa-list"></i> Explore Services</a>
+          </div>
+        </div>
+
+        <!-- Live Queue Widget -->
+        <div class="col-lg-5 col-md-8 mx-auto">
+          <div class="hero-widget-card p-4">
+            <div class="widget-header d-flex justify-content-between align-items-center mb-3">
+              <h5 class="text-gc-gold m-0 text-uppercase tracking-wider font-monospace"><i class="fa-solid fa-signal"></i> Today's Live Queue</h5>
+              <button id="refresh-widget-btn" class="refresh-widget-btn text-white-50 border-0 bg-transparent" title="Refresh Live Queue Status">
+                <i class="fa-solid fa-rotate-right"></i>
+              </button>
+            </div>
+            <div class="widget-token-display text-center py-3">
+              <span class="widget-token-label text-white-50 text-uppercase font-monospace text-xs">Now Serving Token</span>
+              <div class="widget-token-number text-white display-5 fw-bold my-2" id="widget-token-num">A-005</div>
+              <div class="widget-wait-time d-inline-flex align-items-center gap-2 px-3 py-1 rounded-pill">
+                <i class="fa-solid fa-clock"></i> Est. Wait: <span id="widget-wait-val">20 mins</span>
+              </div>
+            </div>
+            <p class="text-white-50 text-center text-xs mt-3 mb-3">
+              Live updates synced directly with salon reception floor.
+            </p>
+            <a href="queue.html" class="btn-gc-gold w-100 btn-sm text-center">Track Full Queue</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Counter Bar -->
+  <section class="stats-bar bg-dark py-4">
+    <div class="container">
+      <div class="row text-center g-4">
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number display-6 fw-bold text-gc-gold" data-target="2500" data-suffix="+">0</div>
+            <div class="stat-label text-white-50 text-xs text-uppercase font-monospace mt-1">Happy Clients</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number display-6 fw-bold text-gc-gold" data-target="15" data-suffix="+">0</div>
+            <div class="stat-label text-white-50 text-xs text-uppercase font-monospace mt-1">Expert Stylists</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number display-6 fw-bold text-gc-gold" data-target="10" data-suffix=" Years">0</div>
+            <div class="stat-label text-white-50 text-xs text-uppercase font-monospace mt-1">Salon Heritage</div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-item">
+            <div class="stat-number display-6 fw-bold text-gc-gold" data-target="4" data-suffix=".9 ★">0</div>
+            <div class="stat-label text-white-50 text-xs text-uppercase font-monospace mt-1">Google Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="gc-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge-gc-gold mb-2">Our Craft</span>
+        <h2 class="display-5 fw-bold">What We Do Best</h2>
+        <p class="text-muted">Curated signature treatments crafted by international salon experts.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4 col-sm-6">
+          <div class="gc-card gc-card-hover h-100 text-center">
+            <div class="category-icon mb-3"><i class="fa-solid fa-scissors"></i></div>
+            <h3>Hair Styling</h3>
+            <p>Layer cuts, keratin smoothing, and balayage highlights.</p>
+            <p class="text-gc-gold fw-bold mb-3">Starts from ₹149</p>
+            <a href="services.html#hair" class="btn-gc-outline btn-sm">View Hair Services</a>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="gc-card gc-card-hover h-100 text-center">
+            <div class="category-icon mb-3"><i class="fa-solid fa-spa"></i></div>
+            <h3>Skin Care</h3>
+            <p>Organic facials, de-tan treatments, and pore cleanups.</p>
+            <p class="text-gc-gold fw-bold mb-3">Starts from ₹299</p>
+            <a href="services.html#skin" class="btn-gc-outline btn-sm">View Skin Care</a>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="gc-card gc-card-hover h-100 text-center">
+            <div class="category-icon mb-3"><i class="fa-solid fa-hand-sparkles"></i></div>
+            <h3>Nail Studio</h3>
+            <p>Deluxe manicure, pedicure & gel art polish extensions.</p>
+            <p class="text-gc-gold fw-bold mb-3">Starts from ₹349</p>
+            <a href="services.html#nails" class="btn-gc-outline btn-sm">View Nail Services</a>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="gc-card gc-card-hover h-100 text-center">
+            <div class="category-icon mb-3"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3>Bridal & Makeup</h3>
+            <p>HD airbrush makeup and customized bridal glow packs.</p>
+            <p class="text-gc-gold fw-bold mb-3">Starts from ₹1,199</p>
+            <a href="services.html#makeup" class="btn-gc-outline btn-sm">View Makeup</a>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="gc-card gc-card-hover h-100 text-center">
+            <div class="category-icon mb-3"><i class="fa-solid fa-hot-tub-person"></i></div>
+            <h3>Scalp & Spa</h3>
+            <p>Deep scalp nourishment and stress-relief massage therapies.</p>
+            <p class="text-gc-gold fw-bold mb-3">Starts from ₹599</p>
+            <a href="services.html#spa" class="btn-gc-outline btn-sm">View Spa Services</a>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6">
+          <div class="gc-card gc-card-hover h-100 text-center">
+            <div class="category-icon mb-3"><i class="fa-solid fa-user-tie"></i></div>
+            <h3>Men's Grooming</h3>
+            <p>Precision fade haircuts, beard sculpting, and facial care.</p>
+            <p class="text-gc-gold fw-bold mb-3">Starts from ₹149</p>
+            <a href="services.html#mens" class="btn-gc-outline btn-sm">View Men's Care</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 Steps Booking Guide -->
+  <section class="gc-section gc-section-blush">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge-gc-primary mb-2">Hassle-Free</span>
+        <h2 class="display-5 fw-bold">Booking is Simple</h2>
+        <p class="text-muted">Book your transformation in 3 easy steps online</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="gc-card text-center h-100">
+            <div class="step-number mb-3">1</div>
+            <h3>Choose Your Service</h3>
+            <p class="m-0">Pick from our extensive menu of hair, skin, nail, and combo packages.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="gc-card text-center h-100">
+            <div class="step-number mb-3">2</div>
+            <h3>Pick Stylist & Time</h3>
+            <p class="m-0">Select your favorite stylist and reserve your preferred 30-min time slot.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="gc-card text-center h-100">
+            <div class="step-number mb-3">3</div>
+            <h3>Track Queue & Enjoy</h3>
+            <p class="m-0">Receive your instant digital token. Track queue status live from anywhere!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <a href="book.html" class="btn-gc-primary btn-lg"><i class="fa-solid fa-arrow-right"></i> Start Booking Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Offer Banner -->
+  <section class="gc-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="offer-banner p-4 p-md-5 d-flex flex-column flex-lg-row align-items-center justify-content-between gap-4">
+            <div class="offer-info text-center text-lg-start">
+              <span class="badge-gc-gold mb-3">Special Offer</span>
+              <h2 class="text-white display-6 fw-bold mb-3">Weekend Special: 20% OFF All Services!</h2>
+              <p class="text-white-50 mb-4">Schedule your appointment for this weekend and save big with promo code.</p>
+
+              <div class="offer-timer d-flex justify-content-center justify-content-lg-start gap-2">
+                <div class="timer-box p-2 rounded text-center">
+                  <span id="timer-days">02</span>
+                  <label class="text-xs text-white-50">Days</label>
+                </div>
+                <div class="timer-box p-2 rounded text-center">
+                  <span id="timer-hours">14</span>
+                  <label class="text-xs text-white-50">Hours</label>
+                </div>
+                <div class="timer-box p-2 rounded text-center">
+                  <span id="timer-mins">35</span>
+                  <label class="text-xs text-white-50">Mins</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="offer-cta d-flex flex-column align-items-center gap-3">
+              <div class="promo-badge-box p-3 border border-dashed rounded text-center">
+                <div class="text-white text-xs mb-1">Use Promo Code</div>
+                <code class="text-gc-gold fs-4 font-monospace">WEEKEND20</code>
+              </div>
+              <a href="book.html?promo=WEEKEND20" class="btn-gc-gold btn-lg">Claim Offer Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meet Our Stylists Preview -->
+  <section class="gc-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge-gc-gold mb-2">Our Artisans</span>
+        <h2 class="display-5 fw-bold">Expert Hands Behind Your Look</h2>
+        <p class="text-muted">Certified master stylists with decades of combined beauty experience.</p>
+      </div>
+
+      <div class="row g-4 justify-content-center" id="stylists-preview-container">
+        <!-- Loaded via JS -->
+      </div>
+
+      <div class="text-center mt-5">
+        <a href="about.html#team" class="btn-gc-outline">Meet Full Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="gc-section gc-section-dark">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="display-5 fw-bold">The GlowCut Promise</h2>
+        <p>Why thousands of clients trust GlowCut as their #1 salon in Delhi.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-3 col-sm-6 text-center">
+          <div class="p-3">
+            <i class="fa-solid fa-certificate text-gc-gold display-4 mb-3"></i>
+            <h4 class="text-white mb-2">Certified Stylists</h4>
+            <p class="m-0 text-white-50">All staff undergo rigorous L’Oréal & VLCC professional training.</p>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 text-center">
+          <div class="p-3">
+            <i class="fa-solid fa-pump-soap text-gc-gold display-4 mb-3"></i>
+            <h4 class="text-white mb-2">100% Hygienic</h4>
+            <p class="m-0 text-white-50">Single-use kits and medical-grade tool sterilization after every service.</p>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 text-center">
+          <div class="p-3">
+            <i class="fa-solid fa-gem text-gc-gold display-4 mb-3"></i>
+            <h4 class="text-white mb-2">Premium Products</h4>
+            <p class="m-0 text-white-50">We use only authentic international hair and skin brands.</p>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-6 text-center">
+          <div class="p-3">
+            <i class="fa-solid fa-hand-holding-dollar text-gc-gold display-4 mb-3"></i>
+            <h4 class="text-white mb-2">Transparent Pricing</h4>
+            <p class="m-0 text-white-50">No hidden charges. The price you see online is exactly what you pay.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram Feed Mockup -->
+  <section class="gc-section">
+    <div class="container">
+      <div class="text-center mb-5">
+        <span class="badge-gc-primary mb-2">@GlowCutSalon</span>
+        <h2 class="display-5 fw-bold">Follow Our Transformation Feed</h2>
+        <p class="text-muted">Tag us on Instagram to get featured on our page!</p>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-6 col-md-4">
+          <div class="insta-item">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Salon Transformation" class="w-100 h-100 object-fit-cover">
+            <div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="insta-item">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=600&q=80" alt="Salon Haircut" class="w-100 h-100 object-fit-cover">
+            <div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="insta-item">
+            <img src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=600&q=80" alt="Nail Art" class="w-100 h-100 object-fit-cover">
+            <div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="insta-item">
+            <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=600&q=80" alt="Hair Colour" class="w-100 h-100 object-fit-cover">
+            <div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="insta-item">
+            <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?auto=format&fit=crop&w=600&q=80" alt="Facial Treatment" class="w-100 h-100 object-fit-cover">
+            <div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4">
+          <div class="insta-item">
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80" alt="Men Fade Haircut" class="w-100 h-100 object-fit-cover">
+            <div class="insta-overlay"><i class="fa-brands fa-instagram"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="gc-section bg-gc-primary text-white text-center py-5">
+    <div class="container">
+      <h2 class="text-white display-5 fw-bold mb-3">Ready for Your Transformation?</h2>
+      <p class="text-white-50 fs-5 max-width-600 mx-auto mb-4">
+        Book your appointment today and experience luxury salon care with zero waiting time.
+      </p>
+      <a href="book.html" class="btn-gc-gold btn-lg"><i class="fa-solid fa-calendar-check"></i> Book My Appointment</a>
+    </div>
+  </section>
+
+  <!-- Universal Footer -->
+  <footer class="gc-footer">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="gc-footer-brand-name mb-3"><i class="fa-solid fa-scissors"></i> GlowCut Salon</div>
+          <p class="text-white-50">Delhi's premier salon delivering luxury hair styling, organic skin care, real-time live queue tracking, and AI hairstyle consultation.</p>
+          <div class="mt-4">
+            <a href="#" class="gc-social-link"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="gc-social-link"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="gc-social-link"><i class="fa-brands fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-lg-2">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services & Pricing</a></li>
+            <li><a href="offers.html">Packages & Offers</a></li>
+            <li><a href="book.html">Book Appointment</a></li>
+            <li><a href="queue.html">Live Queue Status</a></li>
+            <li><a href="ai-advisor.html">AI Hair Advisor</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+          <h5>Top Services</h5>
+          <ul class="list-unstyled">
+            <li><a href="services.html#hair">Keratin Treatment</a></li>
+            <li><a href="services.html#hair">Global Hair Colour</a></li>
+            <li><a href="services.html#skin">Basic & De-Tan Facial</a></li>
+            <li><a href="services.html#nails">Deluxe Manicure & Pedicure</a></li>
+            <li><a href="services.html#mens">Men's Fade Haircut</a></li>
+            <li><a href="offers.html">Bridal Glow Combo</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-4 col-lg-3">
+          <h5>Contact & Hours</h5>
+          <ul class="list-unstyled">
+            <li class="contact-item"><i class="fa-solid fa-location-dot"></i> <span>123 Defence Colony, New Delhi — 110024</span></li>
+            <li class="contact-item"><i class="fa-solid fa-phone"></i> <span>+91 92679 54524</span></li>
+            <li class="contact-item"><i class="fa-solid fa-envelope"></i> <span>hello@glowcut.in</span></li>
+            <li class="contact-item"><i class="fa-solid fa-clock"></i> <span>Tue - Sat: 10AM - 8PM<br>Sun: 10AM - 6PM (Mon Closed)</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="gc-footer-bottom mt-5">
+        <div>&copy; 2026 GlowCut Salon. All Rights Reserved.</div>
+        <div>Made with ❤️ for Internship Project | Triyuga Soft Tech Pvt. Ltd.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

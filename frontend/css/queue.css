@@ -1,0 +1,119 @@
+/* Live Queue Status Page CSS */
+
+.queue-hero {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, #1C1018 100%);
+  color: #fff;
+  padding: var(--space-12) 0 var(--space-8) 0;
+  text-align: center;
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #2ECC71;
+  box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7);
+  animation: pulse-green 1.8s infinite;
+}
+
+@keyframes pulse-green {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+  70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+}
+
+/* Now Serving Prominent Display */
+.now-serving-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  border: 2px solid var(--color-accent);
+  max-width: 650px;
+  margin: -50px auto var(--space-8) auto;
+  position: relative;
+  z-index: 10;
+}
+
+.now-serving-token {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin: var(--space-2) 0;
+  letter-spacing: 3px;
+}
+
+/* Queue Stats Boxes */
+.queue-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.queue-stat-card {
+  text-align: center;
+  background: #fff;
+  padding: var(--space-6);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+}
+
+.queue-stat-card .val {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Lookup Form Card */
+.lookup-card {
+  background: var(--color-primary-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  margin-bottom: var(--space-8);
+  border: 1px solid var(--color-border);
+}
+
+/* Full Queue List Table */
+.queue-table-container {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+  background: #fff;
+}
+
+.queue-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.queue-table th {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  padding: var(--space-4) var(--space-6);
+  font-family: var(--font-heading);
+  font-size: var(--text-md);
+}
+
+.queue-table td {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+}
+
+.queue-table tr.serving-row {
+  background-color: #FFFDF0;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .now-serving-token { font-size: 2.8rem; }
+  .queue-stats-row { grid-template-columns: 1fr; }
+}
