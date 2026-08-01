@@ -31,8 +31,8 @@ async function initHeroQueueWidget() {
         if (waitEl) waitEl.textContent = estWait > 0 ? `${estWait} mins` : 'No Wait';
       }
     } catch (err) {
-      if (tokenEl) tokenEl.textContent = 'A-001';
-      if (waitEl) waitEl.textContent = '15 mins';
+      if (tokenEl) tokenEl.textContent = 'A-005';
+      if (waitEl) waitEl.textContent = '20 mins';
     } finally {
       if (refreshBtn) setTimeout(() => refreshBtn.classList.remove('fa-spin'), 600);
     }
@@ -122,28 +122,41 @@ async function loadStylistsPreview() {
   const container = document.getElementById('stylists-preview-container');
   if (!container) return;
 
+  let stylists = [];
+
   try {
     const res = await API.getStylists();
     if (res && res.data && res.data.length > 0) {
-      const stylists = res.data.slice(0, 4);
-      container.innerHTML = stylists.map(st => `
-        <div class="gc-card stylist-card gc-card-hover">
-          <div class="stylist-img-wrapper">
-            <img src="${st.photo || 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=400&q=80'}" alt="${st.name}">
-          </div>
-          <h4>${st.name}</h4>
-          <p style="font-size: 0.85rem; color: var(--gc-primary); font-weight: 600;">${st.specializations ? st.specializations.slice(0, 2).join(', ') : 'Stylist'}</p>
-          <div class="star-rating mb-4">
-            <i class="fa-solid fa-star"></i>
-            <span>${st.rating || '4.9'}</span>
-          </div>
-          <a href="book.html?stylist=${st._id}" class="btn-gc-outline btn-sm" style="width: 100%;">Book Session</a>
-        </div>
-      `).join('');
+      stylists = res.data.slice(0, 4);
+    } else {
+      throw new Error('No stylists data');
     }
   } catch (err) {
-    console.error('Error loading stylists preview:', err);
+    console.warn('Backend API offline. Using fallback stylists preview.', err);
+    stylists = [
+      { _id: 'stylist_1', name: 'Vikram Mehta', specializations: ['Hair Specialist', 'Keratin Art'], rating: 4.9, photo: 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=400&q=80' },
+      { _id: 'stylist_2', name: 'Priya Sharma', specializations: ['Skin Expert', 'Bridal Glow'], rating: 4.8, photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80' },
+      { _id: 'stylist_3', name: 'Rohan Gupta', specializations: ['Nail Artist', 'Gel Art'], rating: 4.9, photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80' },
+      { _id: 'stylist_4', name: 'Ananya Sen', specializations: ['Makeup Artist', 'Balayage Specialist'], rating: 4.9, photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80' }
+    ];
   }
+
+  container.innerHTML = stylists.map(st => `
+    <div class="col-6 col-md-3">
+      <div class="gc-card stylist-card gc-card-hover text-center h-100 p-3">
+        <div class="stylist-img-wrapper mb-3 mx-auto overflow-hidden rounded-circle border border-2 border-warning" style="width: 120px; height: 120px;">
+          <img src="${st.photo || 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=400&q=80'}" alt="${st.name}" class="w-100 h-100 object-fit-cover">
+        </div>
+        <h4 class="h6 fw-bold mb-1">${st.name}</h4>
+        <p class="text-xs text-gc-primary fw-semibold mb-2">${st.specializations ? st.specializations.slice(0, 2).join(', ') : 'Stylist'}</p>
+        <div class="gc-stars text-xs mb-3">
+          <i class="fa-solid fa-star"></i>
+          <span>${st.rating || '4.9'}</span>
+        </div>
+        <a href="book.html?stylist=${st._id}" class="btn-gc-outline btn-sm w-100 py-1">Book Session</a>
+      </div>
+    </div>
+  `).join('');
 }
 
 /**

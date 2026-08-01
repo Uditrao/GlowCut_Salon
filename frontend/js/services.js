@@ -58,13 +58,27 @@ async function loadServices() {
 
   try {
     const res = await API.getServices();
-    if (res && res.data) {
+    if (res && res.data && res.data.length > 0) {
       allServices = res.data;
-      renderServicesGrid();
-      renderPricingTable();
+    } else {
+      throw new Error('No service data received');
     }
   } catch (err) {
-    container.innerHTML = `<div class="col-12 text-center text-danger py-5">Failed to load services. Please check back soon.</div>`;
+    console.warn('Backend API offline or failed to fetch services. Using fallback service data.', err);
+    allServices = [
+      { _id: 'haircut_1', name: 'Signature Layer Cut', category: 'Hair', durationMinutes: 30, price: 299, description: 'Precision layer haircut tailored to face shape with wash & blowdry.' },
+      { _id: 'haircut_2', name: 'Keratin Hair Smoothing', category: 'Hair', durationMinutes: 120, price: 2499, description: 'Deep protein smoothing treatment for frizz-free glossy hair.' },
+      { _id: 'haircut_3', name: 'Global Balayage Colour', category: 'Hair', durationMinutes: 90, price: 1999, description: 'Sun-kissed hand-painted highlights with root shadow touchup.' },
+      { _id: 'facial_1', name: 'O3+ Brightening Facial', category: 'Skin', durationMinutes: 45, price: 899, description: 'Dermatologically tested facial for instant glow and de-tanning.' },
+      { _id: 'facial_2', name: 'Hydra-Facial Cleanse', category: 'Skin', durationMinutes: 60, price: 1499, description: 'Pore vacuum extraction & deep hydration serum infusion.' },
+      { _id: 'nails_1', name: 'Deluxe Gel Nail Extensions', category: 'Nails', durationMinutes: 60, price: 999, description: 'Long-lasting UV gel polish extensions with custom nail art.' },
+      { _id: 'makeup_1', name: 'HD Bridal Airbrush Makeup', category: 'Makeup', durationMinutes: 90, price: 3499, description: 'Waterproof camera-ready HD bridal makeup with lash extensions.' },
+      { _id: 'spa_1', name: 'Argan Oil Deep Hair Spa', category: 'Spa', durationMinutes: 45, price: 699, description: 'Nourishing scalp massage & steam therapy for damaged hair.' },
+      { _id: 'mens_1', name: 'Gentleman Fade & Beard Styling', category: "Men's", durationMinutes: 30, price: 249, description: 'Precision taper fade haircut with hot towel beard line sculpting.' }
+    ];
+  } finally {
+    renderServicesGrid();
+    renderPricingTable();
   }
 }
 
