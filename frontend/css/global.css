@@ -324,7 +324,14 @@ img { max-width: 100%; display: block; }
     height: 72px;
   }
   .gc-navbar .navbar-nav {
+    display: flex;
     align-items: center;
+    justify-content: center;
+  }
+  .gc-navbar .nav-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px !important;
   }
 }
 @media (max-width: 991px) {
